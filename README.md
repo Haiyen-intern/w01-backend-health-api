@@ -1,9 +1,29 @@
 # w01-backend-health-api
+1. Hướng dẫn chạy Local
+Để khởi chạy server ở môi trường local, bạn thực hiện theo các bước sau:
 
-## Hướng dẫn chạy local
-1. Đảm bảo máy đã cài Python 3.
-2. Mở Git Bash tại thư mục này và chạy lệnh: `python server.py`
-3. API endpoint test local: `http://localhost:8000/api/health` (Method: GET).
+Đảm bảo máy đã cài đặt Python 3.
 
-## Kiểm thử (Testing)
-- File test Postman Collection nằm ở thư mục gốc: `BE-Health-Tests.postman_collection.json`
+Kích hoạt môi trường ảo (virtual environment) của dự án.
+
+Mở Git Bash tại thư mục gốc và chạy lệnh:
+
+Bash
+python server.py
+2. Thông tin API Endpoint
+Sau khi server khởi chạy thành công, endpoint cục bộ sẽ sẵn sàng tiếp nhận yêu cầu:
+
+URL: http://localhost:8000/api/health
+
+Phương thức (Method): GET
+
+Phản hồi chuẩn (Response): 200 OK kèm dữ liệu định dạng JSON.
+
+3. Quy trình kiểm thử (Testing với Postman)
+Toàn bộ các test case phục vụ việc kiểm thử tự động đã được cấu hình sẵn trong dự án:
+
+Biến môi trường: Sử dụng biến {{baseUrl}} (đảm bảo đã cấu hình giá trị http://localhost:8000 tại environment Local).
+
+Đường dẫn lưu trữ: Bộ thư mục Collection được đặt tên là Intern Training, bạn có thể import vào Postman từ đường dẫn:
+
+docs/postman/Intern Training.postman_collection.json
