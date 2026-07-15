@@ -1,0 +1,7 @@
+# Postman local settings
+.postman/
+
+# Python cache files
+__pycache__/
+*.pyc
+postman/
