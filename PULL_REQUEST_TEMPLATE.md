@@ -1,13 +1,15 @@
-What
-Khởi tạo cấu trúc dự án Backend căn bản, cấu hình file .gitignore để lọc file rác (venv, __pycache__).
-Tạo tài liệu hướng dẫn setup và khởi chạy môi trường local chi tiết trong file README.md.
-Xây dựng thành công API endpoint GET /api/health trả về trạng thái hệ thống.
-Cấu hình file PULL_REQUEST_TEMPLATE.md cho các phiên làm việc tiếp theo.
-Khởi tạo và export Postman Collection phục vụ việc kiểm thử API.
-Why
-Cần có một cấu trúc dự án chuẩn và tài liệu hướng dẫn rõ ràng để các thành viên hoặc Mentor có thể dễ dàng setup và chạy thử dự án dưới local.
-Tạo endpoint /api/health để kiểm tra độ ổn định, đảm bảo server có thể lắng nghe và phản hồi request một cách bình thường trước khi lên các framework lớn hơn (FastAPI/Django).
-How
-Sử dụng thư viện gốc http.server và json của Python để dựng HTTP Server đơn giản tại cổng 8000 mà không cần cài thêm thư viện ngoài.
-Viết class HealthCheckHandler kế thừa từ BaseHTTPRequestHandler để bắt phương thức GET và trả về mã trạng thái 200 OK cùng header application/json.
-Thiết lập quy trình Git Flow chuẩn: Tách nhánh feature/setup-backend-api từ main, commit theo chuẩn Conventional Commits và fix triệt để conflict trực tiếp dưới local trước khi gửi PR.
+## What
+- Initialized the base Backend project structure and configured .gitignore to exclude redundant/environment files (venv, __pycache__).
+- Authored a comprehensive guide for local environment setup and execution in README.md.
+- Successfully implemented the GET /api/health API endpoint to return system status.
+- Configured the PULL_REQUEST_TEMPLATE.md file to standardize future development workflows.
+- Initialized and exported the Postman Collection for automated API testing.
+
+## Why
+- A standardized project structure and clear documentation are essential for team members and Mentors to easily set up and run the project locally.
+- Implementing the /api/health endpoint serves as a baseline sanity check, ensuring the server can listen to and handle requests properly before migrating to larger frameworks (FastAPI/Django).
+
+## How
+- Utilized Python's native http.server and json libraries to spin up a lightweight HTTP Server on port 8000 without any external dependencies.
+- Developed the HealthCheckHandler class (extending BaseHTTPRequestHandler) to capture GET requests and return a 200 OK status code with application/json headers.
+- Maintained a standard Git Flow workflow: Created the feature/setup-backend-api branch from main, followed Conventional Commits guidelines, and fully resolved merge conflicts locally before opening this PR.

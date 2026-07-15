@@ -1,43 +1,43 @@
 import json
 from http.server import BaseHTTPRequestHandler, HTTPServer
 
-# 1. Tạo Handler
+# 1. Define Request Handler
 class HealthCheckHandler(BaseHTTPRequestHandler):
     def do_GET(self):
-        # Kiểm tracó gọi đúng endpoint /api/health bằng phương thức GET không
+        # Check if the request matches the /api/health endpoint via GET method
         if self.path == '/api/health':
-            #  200 OK (Thành công)
+            # Send 200 OK success status code
             self.send_response(200)
-            # Khai báo dữ liệu
+            # Set response headers to application/json
             self.send_header('Content-Type', 'application/json')
             self.end_headers()
             
-            # Response
+            # Define response payload
             response_data = {
                 "status": "OK",
                 "message": "Backend server is running smoothly",
                 "environment": "local"
             }
-            # Chuyển đổi dữ liệu
+            # Serialize JSON data and encode it to bytes before sending
             self.wfile.write(json.dumps(response_data).encode('utf-8'))
         else:
-            #  sai đường dẫn trả về lỗi 404 Not Found
+            # Return 404 Not Found error for invalid endpoints
             self.send_response(404)
             self.end_headers()
             self.wfile.write(b"Not Found")
 
-# 2. Đoạn code để khởi chạy Server tại cổng 8000
+# 2. Function to launch the HTTP Server on port 8000
 def run(server_class=HTTPServer, handler_class=HealthCheckHandler, port=8000):
     server_address = ('', port)
     httpd = server_class(server_address, handler_class)
-    print(f"Server đang chạy tại http://localhost:{port} ...")
-    print("Nhấn Ctrl + C để dừng server.")
+    print(f"Server is running at http://localhost:{port} ...")
+    print("Press Ctrl + C to stop the server.")
     try:
         httpd.serve_forever()
     except KeyboardInterrupt:
         pass
     httpd.server_close()
-    print("Server đã dừng.")
+    print("Server stopped.")
 
 if __name__ == '__main__':
     run()
